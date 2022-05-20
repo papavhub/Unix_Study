@@ -1,0 +1,102 @@
+#!/bin/bash
+
+        echo "출발역은 : "
+        read startt
+        echo "도착역은 : "
+        read finishh
+
+FIRST=("설화명곡" "화원" "대곡" "진천" "월배" "상인" "월촌" "송현" "성당못" "대>명" "안지랑" "현충로" "영대병원" "교대" "명덕" "반월당" "중앙로" "대구역" "칠성>시장" "신천" "동대구역" "동구청" "아양교" "동촌" "해안" "방촌" "용계" "율하" "신
+기" "반야월" "각산" "안심")
+
+SECOND=("문양" "다사" "대실" "강창" "계명대" "성서산업단지" "이곡" "용산" "죽전" "감삼" "두류" "내당" "반고개" "신남" "반월당" "경대병원" "대구은행" "범어" "수>성구청" "만촌" "담티" "연호" "대공원" "고산" "신매" "사월" "정평" "임당" "영남대
+")
+
+THIRD=("칠곡경대병원" "학정" "팔거" "동천" "칠곡운암" "구암" "태전" "매천" "매천
+시장" "팔달" "공단" "만평" "팔달시장" "원대" "북구청" "달성공원" "서문시장" "신>남" "남산" "명덕" "건들바위" "대봉교" "수성시장" "수성구민운동장" "어린이회관" "황금" "수성못" "지산" "범물" "용지")
+
+startstation=0
+finishstation=0
+
+
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
+do
+        if [ ${FIRST[i]} = $startt ]
+        then
+                startstation=1
+        fi
+        if [ ${FIRST[i]} = $finishh ]
+        then
+                finishstation=1
+        fi
+done
+
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28
+do
+        if [ ${SECOND[i]} = $startt ]
+        then
+                startstaion=2
+        fi
+done
+
+for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29
+do
+        if [ ${THIRD[i]} = $startt ]
+        then
+                startstation=3
+        fi
+        if [ ${THIRD[i]} = $finishh ]
+        then
+                finishstation=3
+        fi
+done
+
+
+
+echo "startstation:$startstation"
+echo "finishstation:$finishstation"
+
+if [ $startstation = 1 ]
+then
+        if [ $finishstation = 1 ]
+        then
+                echo "환승이 없습니다."
+        elif [ $finishstation = 2 ]
+        then
+                echo "반월당에서 갈아타십시오"
+        elif [ $finishstation = 3 ]
+        then
+                echo "명덕역에서 갈아타십시오"
+        else
+                echo "역을 잘못 입력하셨습니다."
+        fi
+elif [ $startstation = 2 ]
+then
+        if [ $finishstation = 1 ]
+        then
+                echo "반월당에서 갈아타십시오"
+        elif [ $finishstation = 2 ]
+        then
+                echo "환승이 없습니다."
+        elif [ $finishstation = 3 ]
+        then
+                echo "신남역에서 갈아타십시오"
+        else
+                echo "역을 잘못 입력하셨습니다."
+        fi
+elif [ $startstation = 3 ]
+then
+        if [ $finishstation = 1 ]
+        then
+                echo "명덕 역에서 갈아타십시오"
+        elif [ $finishstation = 2 ]
+        then
+                echo "신남 역에서 갈아타십시오"
+        elif [ $finishstation = 3 ]
+        then
+                echo "환승이 없습니다."
+        else
+                echo "역을 잘못 입력하셨습니다."
+        fi
+else
+        echo "역을 잘못 입력하셨습니다."
+fi
